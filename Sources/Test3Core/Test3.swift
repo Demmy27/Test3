@@ -9,6 +9,10 @@ public final class Test3 {
         self.arguments = arguments
     }
     
+    var shouldKeepRunning = true
+    let runLoop = RunLoop.current
+    let distantFuture = Date.distantFuture
+    
     public func run() throws {
 //        guard arguments.count > 1 else {
 //            print("Hello World")
@@ -24,11 +28,13 @@ public final class Test3 {
         downloadTags(contentID: "2") { (resultsTags) in
             guard let resultsTags = resultsTags else {
                 print("Error while downloadTags")
+                self.shouldKeepRunning = false
                 return;
             }
             for item in resultsTags {
                 print(item)
             }
+            self.shouldKeepRunning = false
         }
 //        var shouldQuit = false
 //        while !shouldQuit {
@@ -37,7 +43,8 @@ public final class Test3 {
 //                shouldQuit = true
 //            }
 //        }
-        RunLoop.main.run()
+        while shouldKeepRunning == true &&
+            runLoop.run(mode: .defaultRunLoopMode, before: distantFuture) {}
     }
     
     func getInput() -> String {
