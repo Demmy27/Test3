@@ -14,20 +14,25 @@ public final class Test3 {
     let distantFuture = Date.distantFuture
     
     public func run() throws {
-//        guard arguments.count > 1 else {
-//            print("Hello World")
-//            return
-//        }
-        // The first argument is the execution path
-//        let fileName = arguments[1]
-        
-//        print(fileName)
  
-        print("Hello World")
+        print("Type username")
+        let userName = getInput()
+        if userName.isEmpty || userName.containsWhitespace {
+            print("userName is wrong")
+            return
+        }
         
-        downloadTags(contentID: "2") { (resultsTags) in
+//        var shouldQuit = false
+//        while !shouldQuit {
+//            let first = getInput()
+//            if first == "q" {
+//                shouldQuit = true
+//            }
+//        }
+        
+        downloadUserRepos(userName: userName) { (resultsTags) in
             guard let resultsTags = resultsTags else {
-                print("Error while downloadTags")
+                print("Result is empty")
                 self.shouldKeepRunning = false
                 return;
             }
@@ -36,13 +41,7 @@ public final class Test3 {
             }
             self.shouldKeepRunning = false
         }
-//        var shouldQuit = false
-//        while !shouldQuit {
-//            let first = getInput()
-//            if first == "q" {
-//                shouldQuit = true
-//            }
-//        }
+
         while shouldKeepRunning == true &&
             runLoop.run(mode: .defaultRunLoopMode, before: distantFuture) {}
     }
@@ -54,13 +53,13 @@ public final class Test3 {
         return strData.trimmingCharacters(in: CharacterSet.newlines)
     }
     
-    func downloadTags(contentID: String, completion: @escaping ([String]?) -> Void) {
-        Alamofire.request("https://api.github.com/users/Demmy27/repos")
+    func downloadUserRepos(userName: String, completion: @escaping ([String]?) -> Void) {
+        Alamofire.request("https://api.github.com/users/\(userName)/repos")
             .responseJSON { response in
                 
                 guard response.result.isSuccess,
                     let value = response.result.value else {
-                        print("Error while fetching tags: \(String(describing: response.result.error))")
+                        print("Error while fetching users repos: \(String(describing: response.result.error))")
                         completion(nil)
                         return
                 }
@@ -71,5 +70,13 @@ public final class Test3 {
                 
                 completion(tags)
         }
+    }
+    
+    
+}
+
+extension String {
+    var containsWhitespace : Bool {
+        return(self.rangeOfCharacter(from: .whitespacesAndNewlines) != nil)
     }
 }
