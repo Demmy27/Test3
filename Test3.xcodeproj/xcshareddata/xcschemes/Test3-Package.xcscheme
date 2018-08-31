@@ -14,6 +14,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "Test3::Test3"
+               BuildableName = "Test3"
+               BlueprintName = "Test3"
+               ReferencedContainer = "container:Test3.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "Test3::Test3Core"
                BuildableName = "Test3Core.framework"
                BlueprintName = "Test3Core"
@@ -28,9 +42,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Alamofire::Alamofire"
-               BuildableName = "Alamofire.framework"
-               BlueprintName = "Alamofire"
+               BlueprintIdentifier = "SwiftyJSON::SwiftyJSON"
+               BuildableName = "SwiftyJSON.framework"
+               BlueprintName = "SwiftyJSON"
                ReferencedContainer = "container:Test3.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,9 +56,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "Test3::Test3"
-               BuildableName = "Test3"
-               BlueprintName = "Test3"
+               BlueprintIdentifier = "Alamofire::Alamofire"
+               BuildableName = "Alamofire.framework"
+               BlueprintName = "Alamofire"
                ReferencedContainer = "container:Test3.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -73,9 +87,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "Test3::Test3Core"
-            BuildableName = "Test3Core.framework"
-            BlueprintName = "Test3Core"
+            BlueprintIdentifier = "Test3::Test3"
+            BuildableName = "Test3"
+            BlueprintName = "Test3"
             ReferencedContainer = "container:Test3.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
